@@ -10,11 +10,13 @@ if Videogames == True :
 else :
     print("Nevermind.") 
 
-print("how do variables add/subtract?")
-x = input("pick number 5!")
-X = int(x)
-if X == 5 :
-    X = X + 1
-else :
-    print("Well, let's move on...  This doesn't work!")
+print("How do variables add/subtract?")
+print("Say the first number is 5.")
+X = 5
+N = 3
+while X > -1 :
+    print(X)
+    X = X + N
+    N = N - 1
+print("Well...")
 
