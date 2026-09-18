@@ -36,6 +36,8 @@ Power = 0
 Enemy_X = 650
 Enemy_Vis = 1
 Enemy_Y = 650
+Zoo_X = 450-300/2
+Zoo_Y = 0
 
 
 pos = pygame.mouse.get_pos( )
@@ -62,7 +64,18 @@ while run == True :
     clock = pygame.time.Clock()
     clock.tick(60)
     def enemy_dead():
-        pass
+        global Enemy_X
+        global Enemy_Y
+        global Zoo_Y
+        global Zoo_Y
+        if Zoo_X > Enemy_X:
+            Enemy_X += 1
+        elif Zoo_X < Enemy_X:
+            Enemy_X -= 1
+        if Zoo_Y > Enemy_Y:
+            Enemy_Y += 1
+        elif Zoo_Y < Enemy_Y:
+            Enemy_Y -= 1
     def croc_power():
         global Croc_Size
         global Rand_Vis
@@ -100,11 +113,15 @@ while run == True :
         global seconds
         global Rand_Vis
         global Enemy_Vis
+        global Zoo_X
+        global Zoo_Y
         seconds = 0
         Rand_Vis = 1
         Enemy_Vis = 1
         Start_X = 500
         Start_Y = 150
+        Zoo_X = 450-300/2
+        Zoo_Y = 0
         Croc_Lives = 3
         pygame.draw.rect(DISPLAY, WHITE, [X // 2 - Start_X // 2, Y // 2 - Start_Y // 2, Start_X, Start_Y])
         text = font.render("PRESS SPACE BAR", True, WHITE)
@@ -141,8 +158,8 @@ while run == True :
         Rand_X = 200
         Rand_Y = 200
         Rand_Size = 13
-        Zoo_X = 450-300/2
-        Zoo_Y = 0
+        global Zoo_X
+        global Zoo_Y
         Zoo_Color = GREY
         pygame.draw.rect(DISPLAY, WHITE, [0, 0, 900, 900], 25)
         #Spawns
@@ -181,7 +198,6 @@ while run == True :
             V_Croc_Y = -2
         if Croc_Coll.colliderect(Enemy_Coll):
             if Power == 1:
-                Enemy_Vis = 0
                 enemy_dead()
             else:
                 V_Croc_X = 0
